@@ -1,0 +1,19 @@
+{
+  "name": "odisys",
+  "version": "0.0.1",
+  "description": "about documentation applications",
+  "main": "index.js",
+  "authors": {
+    "name": "alwani",
+    "email": "alwaniachmad7031999aa@gmail.com"
+  },
+  "repository": "documentations/odisys",
+  "scripts": {
+    "dev": "vuepress dev src",
+    "build": "vuepress build src"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "vuepress": "^1.5.3"
+  }
+}
