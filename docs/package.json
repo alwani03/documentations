@@ -16,5 +16,9 @@
   "devDependencies": {
     "v-dialogs": "^2.2.0",
     "vuepress": "^1.5.3"
+  },
+  "dependencies": {
+    "axios": "^1.6.2",
+    "sweetalert2": "^11.10.1"
   }
 }

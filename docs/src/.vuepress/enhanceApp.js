@@ -19,8 +19,16 @@ export default ({
             maxButton: false,
             closeButton: false,
             callback: data => {
+              console.log('----',data)
               if (data === true) {
                 // do some stuff after login
+              }else{
+                Swal.fire({
+                  title: 'Error!',
+                  text: 'gagal login',
+                  icon: 'error',
+                  confirmButtonText: 'Cool'
+  })
               }
             }
           })

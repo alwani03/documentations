@@ -18,6 +18,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 import { STORAGE_KEY } from './helper'
 
 export default {
@@ -29,18 +30,25 @@ export default {
   },
   methods: {
     login () {
-      if (this.username && this.password) {
-        const data = JSON.stringify({
-          name: this.username,
-          time: new Date().getTime()
-        })
-        window.localStorage.setItem(STORAGE_KEY, data)
-        this.$emit('close', true)
-      } else {
-        this.$dlg.alert('Please complete the content', {
-          messageType: 'warning'
-        })
-      }
+          const FormData = require('form-data');
+          let data = new FormData();
+
+          let config = {
+            method: 'post',
+            maxBodyLength: Infinity,
+            url: `http://127.0.0.1:3333/api/auth/login?password=${this.password}&user_code=${this.username}`,
+            data : data
+          };
+
+          axios.request(config)
+          .then((response) => {
+            window.localStorage.setItem(STORAGE_KEY, response.data)
+            this.$emit('close', true)
+          })
+          .catch((error) => {
+            this.$emit('close', false)
+          });
+
     }
   }
 }
