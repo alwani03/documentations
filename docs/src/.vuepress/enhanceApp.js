@@ -1,5 +1,6 @@
 import { checkAuth } from './login/helper'
 import Login from './login/Login'
+import Swal from 'sweetalert2'
 
 export default ({
   Vue,
@@ -19,16 +20,23 @@ export default ({
             maxButton: false,
             closeButton: false,
             callback: data => {
-              console.log('----',data)
               if (data === true) {
-                // do some stuff after login
+                Swal.fire({
+                  title: "Berhasil",
+                  text: "Login",
+                  icon: "success"
+                });
               }else{
                 Swal.fire({
-                  title: 'Error!',
-                  text: 'gagal login',
-                  icon: 'error',
-                  confirmButtonText: 'Cool'
-  })
+                  title: "Username atau Password Salah",
+                  icon: "error",
+                  confirmButtonText: "Okk",
+                }).then((result) => {
+                  /* Read more about isConfirmed, isDenied below */
+                  if (result.isConfirmed) {
+                    location.reload()
+                  } 
+                });
               }
             }
           })

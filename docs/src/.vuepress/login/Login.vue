@@ -20,6 +20,8 @@
 <script>
 import axios from 'axios';
 import { STORAGE_KEY } from './helper'
+import Swal from 'sweetalert2'
+
 
 export default {
   data () {
@@ -29,10 +31,9 @@ export default {
     }
   },
   methods: {
-    login () {
+    login () {   
           const FormData = require('form-data');
-          let data = new FormData();
-
+          let data   = new FormData();
           let config = {
             method: 'post',
             maxBodyLength: Infinity,
